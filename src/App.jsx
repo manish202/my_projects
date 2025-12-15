@@ -1,4 +1,16 @@
+import './static_assets/global.css';
+import Navbar from './components/Navbar';
+import HeroSection from './components/HeroSection';
+import SkillsSection from './components/SkillsSection';
+import ProjectsSection from './components/ProjectsSection';
 const App = () => {
-  return <h1>Hello World</h1>
+  return (
+    <>
+      <Navbar />
+      <HeroSection />
+      <SkillsSection />
+      <ProjectsSection />
+    </>
+  )
 }
 export default App;
