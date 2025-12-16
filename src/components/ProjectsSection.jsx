@@ -1,5 +1,6 @@
 import {useState,useEffect} from 'react';
 import projects from '../static_assets/projects';
+const highlighted_projects = [44,56,58,62,79,85,90,93,98,101,102,107,108,110,118];
 const Card = ({id,title,description,thumbnail,approx_date,keywords,source_code,live_preview}) => {
     const [view, setView] = useState(false);
     return (
@@ -22,7 +23,7 @@ const Card = ({id,title,description,thumbnail,approx_date,keywords,source_code,l
 const handleCalculation = (state) => {
     const sort_by = state.sort_by ?? 'L_first';
     const search_in = state.search_in ?? 'title';
-    const search = state.search?.trim() ?? '';
+    const search = state.search?.trim()?.toLowerCase() ?? '';
     const cur_page = state.cur_page ?? 1;
     const limit = 6;
     const offset = (cur_page - 1)*limit;
@@ -73,6 +74,14 @@ const ProjectsSection = () => {
     }
     return (
         <section id="projects">
+            <div className="container">
+                <div className="title">
+                    <h1>highlighted projects</h1>
+                </div>
+                <div className="card_container d-flex">
+                    {projects.filter(p => highlighted_projects.includes(p.id)).sort((a,b) => a.id - b.id).map(pro => <Card key={pro.id} {...pro} />)}
+                </div>
+            </div>
             <div className="container">
                 <div className="title">
                     <h1>my all projects</h1>
