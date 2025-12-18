@@ -21,7 +21,7 @@ const HeroSection = () => {
                         <a target="_blank" href="https://codepen.io/manish202"><FaCodepen /></a>
                         <a target="_blank" href="https://in.linkedin.com/in/manish-prajapati-640b061b6"><FaLinkedinIn /></a>
                         <a href="mailto:mp94760@gmail.com"><MdAlternateEmail /></a>
-                        <a href="https://www.upwork.com/freelancers/~017561d1f9ce0508fc"><FaUpwork /></a>
+                        <a target="_blank" href="https://www.upwork.com/freelancers/~017561d1f9ce0508fc"><FaUpwork /></a>
                     </div>
                 </div>
             </div>
