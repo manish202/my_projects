@@ -617,7 +617,7 @@ const projects = [
         approx_date: "30/07/2022",
         keywords: ['html', 'css', 'react', 'mongodb', 'express', 'mongoose', 'dotenv', 'react-router-dom', 'react-toastify', 'swiper'],
         source_code: "https://github.com/manish202/blinkit_clone",
-        live_preview: "https://blinkit-clone-b8wb.onrender.com/",
+        live_preview: "https://blinkit-clone-mwfj.onrender.com/",
     },
     {
         id: 63,
@@ -1007,7 +1007,7 @@ const projects = [
         approx_date: "16/11/2023",
         keywords: ['html', 'css', 'bootstrap', 'react', 'react-router-dom', 'react-toastify', 'mongodb', 'express', 'mongoose', 'bcryptjs', 'body-parser', 'cors', 'dotenv', 'jsonwebtoken', 'multer'],
         source_code: "https://github.com/manish202/blinkit_ecom",
-        live_preview: "https://blinkit-ecom.onrender.com/",
+        live_preview: "https://blinkit-ecom-88bh.onrender.com/",
     },
     {
         id: 102,
