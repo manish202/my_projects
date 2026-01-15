@@ -1319,5 +1319,15 @@ const projects = [
         source_code: "https://github.com/manish202/auth0_simple_project",
         live_preview: null,
     },
+    {
+        id: 133,
+        title: "nomadifly adventure",
+        description: "Its a static tourism website built-in nextjs",
+        thumbnail: "nomadiflyadventure.png",
+        approx_date: "13/01/2026",
+        keywords: ['html', 'css', 'react', 'nextjs'],
+        source_code: "https://github.com/manish202/nomadiflyadventure",
+        live_preview: "https://www.nomadiflyadventure.com/",
+    },
 ]
 export default projects;
