@@ -1329,5 +1329,15 @@ const projects = [
         source_code: "https://github.com/manish202/nomadiflyadventure",
         live_preview: "https://www.nomadiflyadventure.com/",
     },
+    {
+        id: 134,
+        title: "the pizza pro",
+        description: "Its a static website built-in nextjs",
+        thumbnail: "thepizzapro.png",
+        approx_date: "18/01/2026",
+        keywords: ['html', 'css', 'react', 'nextjs'],
+        source_code: "https://github.com/manish202/thepizzapro",
+        live_preview: "https://thepizzapro.onrender.com",
+    },
 ]
 export default projects;
