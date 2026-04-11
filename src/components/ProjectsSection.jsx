@@ -1,7 +1,7 @@
 import {useState,useEffect} from 'react';
 import projects from '../static_assets/projects';
-const highlighted_projects = [44,56,58,62,79,85,90,93,98,101,102,107,108,110,118];
-const Card = ({id,title,description,thumbnail,approx_date,keywords,source_code,live_preview}) => {
+
+const Card = ({id,title,description,thumbnail,approx_date,keywords,source_code,live_preview,highlighted,private_repo}) => {
     const [view, setView] = useState(false);
     return (
         <div className='card' title={id}>
@@ -14,12 +14,13 @@ const Card = ({id,title,description,thumbnail,approx_date,keywords,source_code,l
             </div>
             <div className='d-flex btn-box'>
                 <button type='button' className='btn view' onClick={() => setView(o => !o)}>{view ? 'close':'view'}</button>
-                <a href={source_code} className='btn source' target='_blank'>Source Code</a>
+                <a href={source_code} className='btn source' target='_blank'>{private_repo ? "Private Repo":"Source Code"}</a>
                 {live_preview && <a href={live_preview} className='btn live' target='_blank'>Live Preview</a>}
             </div>
         </div>
     )
 }
+
 const handleCalculation = (state) => {
     const sort_by = state.sort_by ?? 'L_first';
     const search_in = state.search_in ?? 'title';
@@ -79,7 +80,7 @@ const ProjectsSection = () => {
                     <h1>highlighted projects</h1>
                 </div>
                 <div className="card_container d-flex">
-                    {projects.filter(p => highlighted_projects.includes(p.id)).sort((a,b) => a.id - b.id).map(pro => <Card key={pro.id} {...pro} />)}
+                    {projects.filter(p => p.highlighted).sort((a,b) => b.id - a.id).map(pro => <Card key={pro.id} {...pro} />)}
                 </div>
             </div>
             <div className="container">

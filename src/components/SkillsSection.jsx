@@ -13,12 +13,12 @@ const SkillsSection = () => {
                             <li>CSS3</li>
                             <li>SVG</li>
                             <li>SASS</li>
-                            <li>Bootstrap</li>
-                            <li>JAVASCRIPT</li>
+                            <li>Bootstrap 5</li>
+                            <li>JAVASCRIPT (ES6+)</li>
                             <li>JQUERY</li>
                             <li>REACTJS</li>
-                            <li>NEXTJS (some knowledge)</li>
-                            <li>TYPESCRIPT (some knowledge)</li>
+                            <li>NEXTJS (Basic)</li>
+                            <li>TYPESCRIPT (Basic)</li>
                         </ul>
                     </div>
                     <div className="card">
@@ -26,7 +26,7 @@ const SkillsSection = () => {
                         <ul>
                             <li>PHP</li>
                             <li>MYSQL</li>
-                            <li>WORDPRESS CMS (some knowledge)</li>
+                            <li>WORDPRESS CMS (Basic)</li>
                             <li>LARAVEL FRAMEWORK</li>
                             <li>NODEJS</li>
                             <li>EXPRESSJS</li>
