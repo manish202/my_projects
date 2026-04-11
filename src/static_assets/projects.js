@@ -1661,7 +1661,7 @@ const projects = [
         description: "Its a frontend of blinkit store MERN project",
         thumbnail: "blinkit_store.png",
         approx_date: "23/02/2026",
-        keywords: ['html','css','bootstrap','javascript','react','react-icons','react-intersection-observer','zod','swiper','styled-components','react-toastify','react-router','react-google-charts','react-redux','@reduxjs/toolkit','@tanstack/react-query','axios'],
+        keywords: ['html','css','bootstrap','javascript','react','react-icons','react-intersection-observer','zod','swiper','styled-components','react-toastify','react-router','react-google-charts','react-redux','@reduxjs/toolkit','@tanstack/react-query','@tanstack/react-query-devtools','@tanstack/eslint-plugin-query','axios'],
         source_code: "https://github.com/manish202/blinkit_store_frontend",
         live_preview: "https://blinkit-store.onrender.com/",
         highlighted: true,
