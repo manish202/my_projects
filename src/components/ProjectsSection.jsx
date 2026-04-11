@@ -4,39 +4,39 @@ import Card from './Card';
 
 const handleCalculation = (state) => {
     const sort_by = state.sort_by ?? 'L_first';
-    const search_in = state.search_in ?? 'title';
     const search = state.search?.trim()?.toLowerCase() ?? '';
     const cur_page = state.cur_page ?? 1;
     const limit = 6;
     const offset = (cur_page - 1)*limit;
-    const searched_projects = search.length > 0 ? projects.filter(p => p[search_in].includes(search)) : projects;
+    const searched_projects = search.length > 0 ? projects.filter(p => p.title.includes(search)) : projects;
     const total_records = searched_projects.length;
     const updated_projects = searched_projects.sort((a,b) => sort_by === 'L_first' ? b.id - a.id : a.id - b.id).slice(offset,offset+limit);
     const total_pages = Math.ceil(total_records / limit);
     const show_prev = cur_page > 1;
     const show_next = cur_page < total_pages;
-    return {...state,sort_by,search_in,search,cur_page,total_pages,total_records,show_prev,show_next,projects:updated_projects}
+    return {...state,sort_by,search,cur_page,total_pages,total_records,show_prev,show_next,projects:updated_projects}
 }
 const initialState = handleCalculation({});
 
 const ProjectsSection = () => {
     const [state,setState] = useState(initialState);
-    const [searchIn,setSearchIn] = useState(initialState.search_in);
     const [search,setSearch] = useState(initialState.search);
-    const handleSorting = (e) => setState(old => handleCalculation({...old, sort_by: e.target.value, cur_page: 1}));
+    const handleChange = (e) => {
+        const {name,value} = e.target;
+        setState(prev => handleCalculation({...prev, [name]: value,cur_page: 1}));
+    }
     const handleSearch = (e) => {
         e.preventDefault();
-        const {search_in,search} = e.target;
-        setState(old => handleCalculation({...old, search_in: search_in.value, search: search.value, cur_page: 1}));
+        setState(prev => handleCalculation({...prev,search,cur_page: 1}));
     }
     const handleReset = () => {
         setState(initialState);
         setSearch(initialState.search);
     }
     const handlePagination = (dir) => {
-        setState(old => {
-            const cur_page = old.cur_page + (dir === 'next' ? +1:-1);
-            return handleCalculation({...old,cur_page});
+        setState(prev => {
+            const cur_page = prev.cur_page + (dir === 'next' ? +1:-1);
+            return handleCalculation({...prev,cur_page});
         });
     }
     return (
@@ -55,15 +55,11 @@ const ProjectsSection = () => {
                 </div>
                 <div className="filters d-flex">
                     <form id="search" onSubmit={handleSearch}>
-                        <select id="order" name='sort_by' value={state.sort_by} onChange={handleSorting}>
+                        <select id="order" name='sort_by' value={state.sort_by} onChange={handleChange}>
                             <option value="L_first">latest first</option>
                             <option value="O_first">oldest first</option>
                         </select>
-                        <select id="search_in" name='search_in' value={searchIn} onChange={(e) => setSearchIn(e.target.value)}>
-                            <option value="title">title</option>
-                            <option value="keywords">keywords</option>
-                        </select>
-                        <input type="text" name="search" value={search} onChange={(e) => setSearch(e.target.value)} placeholder={`search in ${searchIn}`} />
+                        <input type="text" name="search" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="search" />
                         <button className="btn" type="submit">search</button>
                         <button className="btn" type="button" id="reset" onClick={handleReset}>reset</button>
                     </form>
