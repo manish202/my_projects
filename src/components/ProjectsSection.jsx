@@ -1,4 +1,4 @@
-import {useState,useEffect} from 'react';
+import {useState} from 'react';
 import projects from '../static_assets/projects';
 import Card from './Card';
 
@@ -18,26 +18,11 @@ const handleCalculation = (state) => {
     return {...state,sort_by,search_in,search,cur_page,total_pages,total_records,show_prev,show_next,projects:updated_projects}
 }
 const initialState = handleCalculation({});
-const TitleAndSearch = ({resetSearch}) => {
-    const [searchIn,setSearchIn] = useState(initialState.search_in);
-    const [search,setSearch] = useState(initialState.search);
-    useEffect(() => {
-        setSearchIn(initialState.search_in);
-        setSearch(initialState.search);
-    },[resetSearch]);
-    return (
-        <>
-            <select id="search_in" name='search_in' value={searchIn} onChange={(e) => setSearchIn(e.target.value)}>
-                <option value="title">title</option>
-                <option value="keywords">keywords</option>
-            </select>
-            <input type="text" name="search" value={search} onChange={(e) => setSearch(e.target.value)} placeholder={`search in ${searchIn}`} />
-        </>
-    )
-}
+
 const ProjectsSection = () => {
     const [state,setState] = useState(initialState);
-    const [resetSearch, setResetSearch] = useState(false);
+    const [searchIn,setSearchIn] = useState(initialState.search_in);
+    const [search,setSearch] = useState(initialState.search);
     const handleSorting = (e) => setState(old => handleCalculation({...old, sort_by: e.target.value, cur_page: 1}));
     const handleSearch = (e) => {
         e.preventDefault();
@@ -46,7 +31,7 @@ const ProjectsSection = () => {
     }
     const handleReset = () => {
         setState(initialState);
-        setResetSearch(old => !old);
+        setSearch(initialState.search);
     }
     const handlePagination = (dir) => {
         setState(old => {
@@ -74,7 +59,11 @@ const ProjectsSection = () => {
                             <option value="L_first">latest first</option>
                             <option value="O_first">oldest first</option>
                         </select>
-                        <TitleAndSearch resetSearch={resetSearch} />
+                        <select id="search_in" name='search_in' value={searchIn} onChange={(e) => setSearchIn(e.target.value)}>
+                            <option value="title">title</option>
+                            <option value="keywords">keywords</option>
+                        </select>
+                        <input type="text" name="search" value={search} onChange={(e) => setSearch(e.target.value)} placeholder={`search in ${searchIn}`} />
                         <button className="btn" type="submit">search</button>
                         <button className="btn" type="button" id="reset" onClick={handleReset}>reset</button>
                     </form>
